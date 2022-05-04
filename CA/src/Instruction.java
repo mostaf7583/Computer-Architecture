@@ -42,7 +42,7 @@ public class Instruction {
 		this.type = type;
 	}
 	public String toString() {
-		return Opcode;
+		return Opcode +" "+operand1+" "+operand2+" "+ type;
 		
 	}
 }
