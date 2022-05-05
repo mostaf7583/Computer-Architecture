@@ -1,2 +1,2 @@
-LDI $s0 5
-ADD $s1 $t0
+LDI R10 5
+ADD R1 R2
