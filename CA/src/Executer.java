@@ -4,9 +4,12 @@ public class Executer {
 	public Executer() {
 		
 	}
-	public String ADD(String operand1,String operand2,Register status) {
+	public String ADD(byte byte1,byte byte2,Register status) {
 		int c1 = 0,cOut = 0;
 		String result="";
+		String operand1 = String.format("%8s", Integer.toBinaryString(byte1 & 0xFF)).replace(' ', '0');
+		String operand2 = String.format("%8s", Integer.toBinaryString(byte2 & 0xFF)).replace(' ', '0');
+		
 		for(int i=operand1.length()-1;i>=0;i--) {
 			String r1 = String.valueOf(operand1.charAt(i));
 			String r2 = String.valueOf(operand2.charAt(i));
@@ -35,8 +38,10 @@ public class Executer {
 			Z = '1';
 		else
 			Z='0'; 
+
+		byte statusByte = Byte.valueOf("000"+cOut+V+N+(N^V.charAt(0))+Z);
 		
-		status.setData("000"+cOut+V+N+(N^V.charAt(0))+Z);
+		status.setData(statusByte);
 		return result;
 	}
 	public String SUB(String operand1,String operand2,Register status) {
